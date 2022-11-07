@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <script>
+    var city=["Hyderbad","Bangalore","Mumbai","Vizag","Pune"]
+    document.write('<h4>Some City Names</h4>')
+    for(i=0;i<city.length;i++){
+        document.write(city[i] +"<br>")
+    }
+  </script>
+  <script>
+    var city=["Hyderbad","Bangalore","Mumbai","Vizag","Pune"]
+    document.write('<h5>Push method</h5>')
+    city.push("Delhi")
+    for(i=0;i<city.length;i++){
+        document.write(city[i] +"<br>")
+    }
+  </script>
+  <script>
+    var city=["Hyderbad","Bangalore","Mumbai","Vizag","Pune"]
+    document.write('<h5>Unshift method</h5>')
+    city.unshift("Kolkata")
+    for(i=0;i<city.length;i++){
+        document.write(city[i] +"<br>")
+    }
+  </script>
+  <script>
+    var city=["Hyderbad","Bangalore","Mumbai","Vizag","Pune"]
+    document.write('<h5>Splice method</h5>')
+    city.splice(2,1,"Jaipur")
+    for(i=0;i<city.length;i++){
+        document.write(city[i] +"<br>")
+    }
+  </script>
+  <script>
+    var city=["Hyderbad","Bangalore","Mumbai","Vizag","Pune"]
+    document.write('<h5>Pop method</h5>')
+    city.pop()
+    for(i=0;i<city.length;i++){
+        document.write(city[i] +"<br>")
+    }
+  </script> 
+   <script>
+    var city=["Hyderbad","Bangalore","Mumbai","Vizag","Pune"]
+    document.write('<h5>Shift method</h5>')
+    city.shift()
+    for(i=0;i<city.length;i++){
+        document.write(city[i] +"<br>")
+    }
+  </script> 
+   <script>
+    var city=["Hyderbad","Bangalore","Mumbai","Vizag","Pune"]
+    document.write('<h5>Splice method</h5>')
+    city.splice(1,2)
+    for(i=0;i<city.length;i++){
+        document.write(city[i] +"<br>")
+    }
+  </script>
+   <script>
+    var city=["Hyderbad","Bangalore","Mumbai","Vizag","Pune"]
+    document.write('<h5>Sort method</h5>')
+    city.sort()
+    for(i=0;i<city.length;i++){
+        document.write(city[i] +"<br>")
+    }
+  </script>
+   <script>
+    var city=["Hyderbad","Bangalore","Mumbai","Vizag","Pune"]
+    document.write('<h5>Reverse method</h5>')
+    city.reverse()
+    for(i=0;i<city.length;i++){
+        document.write(city[i] +"<br>")
+    }
+  </script> 
+    
+</body>
+</html>
