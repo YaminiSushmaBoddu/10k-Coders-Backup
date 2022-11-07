@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+        h4{
+            text-align: center;
+        }
+
+        .left {
+            grid-column: 1/2;
+            background-color:gainsboro;
+            padding: 5px;
+        }
+
+        .middle {
+            grid-column: 2/3;
+            background-color:rgb(241, 241, 241);
+            padding:5px;
+        }
+        .right{
+            background-color:gainsboro;
+            grid-column: 3/4;
+            padding:5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <script>
+                 // Creating Object in Literal way 
+                var personalDetails = {
+                    fName: "Yamini",
+                    lName: "Sushma",
+                    mobile: 7036827679,
+                    mail: "yaminisushma2812@gmail.com",
+                    fullName: function () {
+                        document.write(this.fName + " " + this.lName)
+                    }
+                }
+                document.write('<h5>Personal Details:</h5>')
+                personalDetails.fullName();
+                for (a in personalDetails) {
+                    if (a !== "fullName") {
+                        document.write("<br>" + a + ":" + personalDetails[a])
+                    }
+                }
+           
+                // Creating object with build in method
+                var sscmarks = new Object({ Telugu: 80, Hindi: 80, English: 50, Maths: 70 });
+                document.write('<h5>10th Marks:</h5>')
+                for (a in sscmarks) {
+                    if (sscmarks[a] >= 50) {
+                        document.write(a + "    :   " + sscmarks[a] + "  - pass" + "<br>");
+                    }
+                    else {
+                        document.write(a + "    :   " + sscmarks[a] + "  - fail" + "<br>");
+                    }
+                }
+
+                //Creating Object with Constructor Function
+                function interMarks(sanskrit, maths, physics, chemistry) {
+                    this.snaskrit = sanskrit;
+                    this.maths = maths;
+                    this.physics = physics;
+                    this.chemistry = chemistry
+                }
+                var marks = new interMarks(90, 73, 72, 50, 55)
+                document.write('<h5>Intermediate Marks:</h5>')
+                for (a in marks) {
+                    document.write(a + ":" + marks[a] + "<br>");
+                }
+                console.log(marks)                    
+
+                //Creating object with Class
+                class Btech {
+                    constructor(collegeName, branch, percentage) {
+                        this.collegeName = collegeName;
+                        this.branch = branch;
+                        this.percentage = percentage;
+                    }
+                }
+                var details = new Btech("Swarnandhra", "ECE", "73%")
+                document.write('<h5>B.tech Details:</h5>')
+                for (x in details) {
+                    document.write(x + "   :   " + details[x] + "<br>")
+                }
+                console.log(details)
+            </script>
+        </div>
+        <div class="middle">
+            <script>
+                 // Creating Object in Literal way 
+                var food = {
+                    item1: "Biryani",
+                    item2: "Fish",
+                    item3: "Chickenwings",
+                    item4: "Mutton",
+                    item5: "Crabs"
+                }
+                document.write(' <h5>Favourite Food:</h5>')
+                for(x in food){
+                    if(x!=="item2" && x!=="item4"){
+                    document.write(x + ":" + food[x] + "<br>")
+                }
+            }
+  
+                  // Creating object with build in method
+                var icecreams= new Object({item1:"Vanila", item2:"Blackcurrent", item3:"Butterscotch",});
+                document.write(' <h5>Fvourite Ice-Creams:</h5>')
+                document.write(icecreams.item1 + "<br>"+ icecreams.item2 + "<br>" + icecreams.item3)
+  
+                 //Creating Object with Constructor Function
+                function sweets(sweet1, sweet2, sweet3, sweet4){
+                    this.sweet1=sweet1;
+                    this.sweet2=sweet2;
+                    this.sweet3=sweet3;
+                    this.sweet4=sweet4;
+                }
+                var Sweets=new sweets("Rasagulla", "Mottichoor", "Malaipuri", "Gulabjam")
+                document.write(' <h5>Fvourite Sweets:</h5>')
+                for(a in Sweets){
+                    document.write(Sweets[a] + "<br>")
+                }
+
+                //Creating object with Class
+                class FavouriteCakes{
+                    constructor(item1,item2,item3){
+                        this.item1=item1;
+                        this.item2=item2;
+                        this.item3=item3;
+                    }
+                }
+                var cakes= new FavouriteCakes("Redvelvet", "Pinapple","Butterscotch")
+                document.write('<h5>Favourite Cake:</h5>')
+                for(a in cakes){
+                    document.write(cakes[a] + "<br>")
+                }
+              </script>
+        </div>
+        <div class="right">
+            <script>
+                 // Creating Object in Literal way 
+                var favouriteActors={
+                    first:"Prabhas",
+                    second:"NTR",
+                    third:"Vijay Devarkonda",
+                    fourth:"Pawan Kalyan",
+                    fifth:"Surya",
+                    Sixth:"Snow Bro"
+                }
+                document.write('<h5>Favourite Actors:</h5>')
+                for(a in favouriteActors){
+                    if( favouriteActors[a] !== "Vijay Devarkonda" & favouriteActors[a] !== "Snow Bro"){
+                    document.write(favouriteActors[a] + "<br>")
+                }
+            }
+
+                  // Creating object with build in method
+                var movies1=new Object({movie1:"Mirchi",movie2:"Bahubali",movie3:"Billa"});
+                var movies2=new Object({movie1:"Nayak",movie2:"Magadheera", movie3:"Yevadu"});
+                var hero=prompt("Enter Hero Name");
+                var heroine=prompt("Enter Heroine Name");
+                document.write('<h5>Favourite Movie:</h5>')
+                if(hero=="Prabhas" & heroine=="Anushka"){
+                    for(a in movies1){
+                    document.write(movies1[a] + "<br>");
+                }
+            }
+                else if(hero=="RamCharan" & heroine=="Kajal"){
+                    for(a in movies2){
+                    document.write(movies2[a] + "<br>");
+                }
+            }
+                else{
+                    document.write("No Movies")
+                }
+ 
+                 //Creating Object with Constructor Function
+                function actress(first,second,third,fourth,fifth,sixth){
+                    this.firts=first;
+                    this.second=second;
+                    this.third=third;
+                    this.fourth=fourth;
+                    this.fifth=fifth;
+                    this.sixth=sixth;
+                }
+                var Actress= new actress("Samanth","Anushka","Kajal","Nazriya","Tamannaah","Rakul Preet")
+                document.write('<h5>Favourite Actress:</h5>')
+                for(a in Actress){
+                if(Actress[a] !=="Tamannaah" & Actress[a] !=="Rakul Preet"){
+                    document.write(Actress[a] + "<br>")
+                }
+            }
+
+                //Creating object with Class
+                class SongsAlbum{
+                    constructor(Album1,Album2,Album3){
+                       this.Album1=Album1;
+                       this.Album2=Album2;
+                       this.Album3=Album3;
+                    }
+                }
+                    var favouriteAlbum=new  SongsAlbum("Varsham","Athadu","Orange")
+                    document.write(' <h5>Favourite Album:</h5>') 
+                    for(a in favouriteAlbum){
+                        document.write(favouriteAlbum[a] + "<br>")
+                    }
+            </script>
+        </div>
+    </div>
+
+</body>
+
+</html>
