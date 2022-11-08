@@ -10,7 +10,11 @@
     <script>
         var countries=["India","Newzland","Australia","SouthAfrica","Pakistan"]
         countries.forEach(function(country,index,arr){
-            document.write(country+ " " + index+ " "+ arr + "<br>")
+            document.write(country+ " " + index+ " "+ "<br>")
+        })
+        var states=["Andhra Pradesh","Telangana","Tamil Nadu","Kerala","Karnataka"]
+        states.forEach((stateNames,index1,arr1)=>{
+             document.write("<br>"+stateNames +" is a state in India....Some other states in India are......"+ arr1+".")
         })
     </script>
 </body>

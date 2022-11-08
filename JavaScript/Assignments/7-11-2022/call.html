@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //call by Reference
+    var person1={
+        fName:"Yamini",
+        lName:"Sushma",
+    }
+    person1.lName="Boddu";
+    var person2 = person1;
+    console.log(person1)
+    console.log(person2)
+
+    //call by value
+    function details(name,email,phone,city){
+        this.name=name;
+        this.email=email;
+        this.phone=phone;
+        this.city=city;
+        this .state="Andhra Pradesh";
+        this.country="India"
+    }
+    var p1=new details("Yamini Sushma","Yamini@gmail.com",7036827679,"Narsapur")
+    var p2=new details("Harika","hari@gmail.com",9010377655,"Palkollu")
+    p1.name="Yamini"
+    for(a in p1){
+        document.write(p1[a]+"<br> " )
+    }
+    for(b in p2){
+        document.write("<br>"+p2[b])
+    }
+    </script>
+</body>
+</html>
