@@ -1,0 +1,14 @@
+div{
+    text-align: center;
+}
+img{
+    width: 30%;
+    height: 15%;
+}
+h2{
+    text-transform: uppercase;
+    text-decoration:underline;
+}
+p{
+    font-size: 20px;
+}
