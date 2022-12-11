@@ -1,0 +1,58 @@
+<!--1.template literals???
+
+
+2.spread operator and rest params???
+
+
+3.perform sum of numbers in a array using reduce
+
+arry=[1,2,3]
+o/p:6
+
+
+4.arry of objects-->
+
+
+
+        var totalScore=teamIndia.reduce((initialValue,currentValue)=>initialValue+currentValue.runs,0)
+        var totalFour=teamIndia.reduce((initialValue1,currentValue1)=>initialValue1+currentValue1.fours,0)
+        var totalSix=teamIndia.reduce((initial,current)=>initial+current.sixes,0)
+
+
+
+         <!--<form action="" method="post">
+        <label for="">
+           Name 
+           <input type="text" placeholder="First Name" id="fname">
+           <br>
+           <input type="text" placeholder="Last Name" id="lname">
+        </label>
+        <br><br>
+        <label for="">
+            Email 
+            <input type="email" name="email" id="mail">
+        </label>
+        <br>
+        <br>
+        <label for="">
+            Message 
+        </label>
+            <textarea name="textarea" id="textarea" cols="21" rows="5" style="resize:none"></textarea>
+            <br>
+            <br>
+            <button type="button" style="margin-left: 10rem ;border-radius: 5px; padding-left:10px; padding-right: 10px; ">Send</button>
+    </form>-->
+
+
+     /*  #fname{
+            margin: 20px;
+        }
+        #lname{
+            margin-left: 60px;
+        }
+        #mail{
+            margin: 16px;
+        }
+        textarea {
+  vertical-align: top;
+      }*/

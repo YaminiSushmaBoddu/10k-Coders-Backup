@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div >
+        <form >
+            <input type="text" id="taskName" placeholder="Task Name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <select  id="category">
+                <option >Select Category</option>
+                <option>NAP Bug Task</option>
+                <option >NAP Dev</option>
+                <option>New Project</option>
+                <option>HP Update</option>
+            </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" placeholder="Jira ID" id="jiraID">
+            <br>
+            <br>
+            <select id="assignee">
+                <option>Select Assignee</option>
+                <option >Bibhu</option>
+                <option >Tanzil</option>
+            </select>&nbsp;&nbsp;
+            <select id="status">
+                <option>Select Status</option>
+                <option >Completed</option>
+                <option >Not-Completed</option>
+            </select>&nbsp;&nbsp;
+            <input type="date"  id="created">&nbsp;&nbsp;
+            <input type="date"  id="due">&nbsp;&nbsp;
+            <br>
+            <br>
+            <input type="text" placeholder="Mock UP" id="mockUp">
+            <br><br>
+            <textarea  id="notes" cols="75" rows="3" placeholder="Other Comments"></textarea>
+            <br><br>
+            <button class="btn btn-primary " onclick="getUserFromForm()">Submit</button>
+        </form>
+    </div><br><br>
+        <table  border="1">
+            <thead>
+                <tr>
+                    <th >SL.NO</th>
+                    <th>TASK NAME</th>
+                    <th >CREATED</th>
+                    <th>DUE</th>
+                    <th >GO LIVE</th>
+                    <th >ASSIGNEE</th>
+                    <th >CATEGORY</th>
+                    <th >STATUS</th>
+                    <th>JIRA ID</th>
+                    <th >MOCK-UP</th>
+                    <th >NOTES</th>
+                    <th >ACTIONS</th>
+                </tr>
+                
+            </thead>
+            <tbody></tbody>
+        </table>
+
+    <script>
+        var userInfo = {
+            taskName: "",
+            created: "",
+            due: "",
+            assignee: "",
+            category: "",
+            status: "",
+            jiraID: "",
+            mockUp: "",
+            notes: "",
+
+        }
+        var users = []
+        function getUserFromForm() {
+          var user = {...userInfo}
+            for (a in user) {
+                user[a] = document.getElementById(a).value
+            }
+            users.push(user)
+            displayUsers(users)
+            console.log(user)
+        }
+
+
+        function displayUsers(users) {
+            document.querySelector("tbody").innerHTML=""
+            users.forEach((ele,i)=>{
+                var myTr = document.createElement("tr")
+                for (a in ele) {
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = ele[a]
+                    myTr.appendChild(myTd)
+                }
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+
+    </script>
+</body>
+
+</html>

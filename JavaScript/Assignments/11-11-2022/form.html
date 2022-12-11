@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     /* table{
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        padding: 100px;
+      }*/
+      td{
+        padding: 10px;
+      } 
+      form{
+        display:table;
+        margin: auto;
+        margin-top: 10%;
+      }
+    </style>
+</head>
+<body>
+   <form action="" method="post">
+    <fieldset style="border-radius: 5px">
+        <table>
+            <tr>
+                <td  >Name</td>
+                <td>
+                    <input type="text" placeholder="First Name">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: end">
+                    <input type="text" placeholder="Last Name">
+                </td>
+            </tr>
+            <tr>
+                <td>Mail</td>
+                <td><input type="email" name="mail" id="mail"></td>
+            </tr>
+            <tr>
+                <td style="vertical-align:top;">Message</td>
+                <td>
+                    <textarea name="" style="resize:none" cols="21" rows="6"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:end">
+                    <button type="button">Send</button>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    </form>
+</body>
+</html>

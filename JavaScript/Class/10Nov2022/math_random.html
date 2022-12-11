@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var randomNumber=Math.random()*100
+        console.log("Random Number:"+randomNumber)
+        console.log(Math.round(randomNumber))
+        console.log(Math.floor(randomNumber))
+        console.log(Math.ceil(randomNumber))
+        document.write("Random Number:"+randomNumber+"<br>")
+        document.write("Round Number:"+Math.round(randomNumber)+"<br>")
+        document.write("Lowest Number:"+Math.floor(randomNumber)+"<br>")
+        document.write("Highest Number:"+Math.ceil(randomNumber)+"<br>")
+        
+        var array=[]
+        for(i=0;array.length<10;i++){
+            var rarray=Math.ceil(Math.random()*1000)
+            array.push(rarray)
+        }
+        console.log(array)
+        document.write("Random numbers of Array:"+array+"<br>")
+        
+        var array1=[]
+        while(array1.length<10){
+                var randomarray1=Math.round(Math.random()*10000)
+                console.log(randomarray1)
+                if(String(randomarray1).length==4){
+                array1.push(randomarray1)
+            }
+        }
+        console.log(array1)
+        document.write("Display 4 digit Numbers:"+array1)
+    </script>
+</body>
+</html>

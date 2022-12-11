@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document3</title>
+</head>
+<body>
+    <button type="button" onclick="getData()">Get Data </button>
+    <script>
+        var data=[]
+        function getData(){
+           var getInfo=new XMLHttpRequest()
+           getInfo.onreadystatechange=function(){
+            if(getInfo.readyState==4 && getInfo.status==200){
+              data=JSON.parse(getInfo.response)
+              console.log(data)
+              display()
+            }
+           }
+           getInfo.open("GET","https://ranked-crime-cities.p.rapidapi.com/Kc4Qth/ranked_crime_cities")
+           getInfo.setRequestHeader("X-RapidAPI-Key", "48e058f4fbmshc917db2ba62aa60p10e353jsnc3dc90dda8dd")
+           getInfo.setRequestHeader("X-RapidAPI-Host", "ranked-crime-cities.p.rapidapi.com")
+           getInfo.send()
+        }
+      function display(){       
+        document.write("Worlds Ranked Crime Cities")    
+                data.forEach((ele)=>{
+                    document.write('<br>'+ele.id+"  "+ele.Name)
+                })
+            }
+
+
+         
+          /*  function getData(){
+                return new Promise((resolve, reject) => {
+                    var getInfo=new XMLHttpRequest()
+           getInfo.onreadystatechange=function(){
+            if(getInfo.readyState==4 && getInfo.status==200){
+              data=JSON.parse(getInfo.response)
+             resolve(data)
+           // reject()
+            }
+           }
+           getInfo.open("GET","https://ranked-crime-cities.p.rapidapi.com/Kc4Qth/ranked_crime_cities")
+           getInfo.setRequestHeader("X-RapidAPI-Key", "48e058f4fbmshc917db2ba62aa60p10e353jsnc3dc90dda8dd")
+           getInfo.setRequestHeader("X-RapidAPI-Host", "ranked-crime-cities.p.rapidapi.com")
+           getInfo.send() 
+                })
+            }
+            getData().then((data)=>{
+                document.write("Worlds Ranked Crime Cities")  
+                data.forEach((ele)=>{
+                    document.write('<br>'+ele.id+"  "+ele.Name)
+                })
+            }).catch(()=>{
+              document.write("Server Issue")
+            })*/
+
+         /*  var data=[]
+            function getData(){
+                return new Promise((resolve, reject) => {
+                    var getInfo=new XMLHttpRequest()
+           getInfo.onreadystatechange=function(){
+            if(getInfo.readyState==4 && getInfo.status==200){
+              data=JSON.parse(getInfo.response)
+             resolve(data)
+           // reject()
+            }
+           }
+           getInfo.open("GET","https://ranked-crime-cities.p.rapidapi.com/Kc4Qth/ranked_crime_cities")
+           getInfo.setRequestHeader("X-RapidAPI-Key", "48e058f4fbmshc917db2ba62aa60p10e353jsnc3dc90dda8dd")
+           getInfo.setRequestHeader("X-RapidAPI-Host", "ranked-crime-cities.p.rapidapi.com")
+           getInfo.send() 
+                })
+            }
+
+            async function handledAsynchronousData(){
+                try {
+                    var data=await getData();
+                    document.write("Worlds Ranked Crime Cities")  
+                data.forEach((ele)=>{
+                    document.write('<br>'+ele.id+"  "+ele.Name)
+                })  
+                } catch (error) {
+                    document.write("Server Issue")  
+                }
+            }
+
+            handledAsynchronousData()*/
+    </script>
+</body>
+</html>

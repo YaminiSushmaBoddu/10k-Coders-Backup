@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var users = [
+            {
+                "fname": "Kofi",
+                "lname": "Dykstra"
+            },
+            {
+                "fname": "Arzak",
+                "lname": "Breiter"
+            },
+            {
+                "fname": "Audrey",
+                "lname": "Clay"
+            },
+            {
+                "fname": "Moses",
+                "lname": "Fogle"
+            },
+            {
+                "fname": "Elisha",
+                "lname": "Delatorre"
+            },
+            {
+                "fname": "Milind",
+                "lname": "Chase"
+            },
+            {
+                "fname": "Clayton",
+                "lname": "Berry"
+            },
+            {
+                "fname": "Kurt",
+                "lname": "Wittek"
+            },
+            {
+                "fname": "Majeed",
+                "lname": "Trautman"
+            },
+            {
+                "fname": "Angelique",
+                "lname": "Jellison"
+            }
+        ]
+        var filteredUsers=[]
+          function displayUsers(users){
+            document.querySelector("tbody").innerHTML=""
+            users.forEach((user, i) => {
+                var myTr = document.createElement("tr")
+
+
+                /* Object.values(user).forEach((val)=>{
+                     var myTd = document.createElement("td")
+                     myTd.innerHTML=val;
+                     myTr.appendChild(myTd)
+                 })
+
+                 for(a in user){
+                   var myTd = document.createElement("td")
+                   myTd.innerHTML=user[a];
+                   myTr.appendChild(myTd)
+             }*/
+
+
+                var td1 = document.createElement("td");
+                td1.innerHTML = user.fname
+                myTr.appendChild(td1)
+
+                var td2 = document.createElement("td");
+                td2.innerHTML = user.lname
+                myTr.appendChild(td2)
+
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.innerHTML = "EDIT"
+                editTd.appendChild(editBtn)
+                myTr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteUsers(" + i + ")");
+                deleteBtn.innerHTML = "DELETE"
+                deleteTd.appendChild(deleteBtn)
+                myTr.appendChild(deleteTd)
+
+
+                document.querySelector("tbody").appendChild(myTr)
+            });
+          }
+            
+        function deleteUsers(i){
+           if(filteredUsers.length==0){
+            filteredUsers=users.filter((a,b)=>{
+                return a.lname !== users[i].lname
+            })
+           }
+           else{
+            filteredUsers=filteredUsers.filter((a,b)=>{
+                return a.lname !== filteredUsers[i].lname
+            })
+           }
+           displayUsers(filteredUsers)
+        }
+        displayUsers(users)
+    </script>
+</body>
+
+</html>

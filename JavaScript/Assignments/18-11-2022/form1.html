@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Registration Details</legend>
+        <table>
+            <tr>
+                <td><label>University:</label></td>
+                <td><input type="text" name="" id="university"></td>
+            </tr>
+            <tr>
+                <td><label>Institute:</label></td>
+                <td><input type="text" name="" id="institute"></td>
+            </tr>
+            <tr>
+                <td><label>Branch:</label></td> 
+                <td>
+                    <select name="" id="branch">
+                        <option value="--select--">--select--</option>
+                        <option value="ECE">ECE</option>
+                        <option value="EEE">EEE</option>
+                        <option value="MECH">MECH</option>
+                        <option value="CSE">CSE</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td> <label for="">Degree:</label></td>
+                <td>        
+                    <select name="" id="degree">
+                    <option value="B.Tech">B.Tech</option>
+                    <option value="BA">BA</option>
+                    </select>
+                    <input type="radio" name="course" value="Pursuing">Pursuing
+                   <input type="radio" name="course" value="Completed">Completed
+                </td>
+            </tr>
+            <tr>
+                <td><label for="">Average CPI:</label></td>
+                <td><input type="text" name="" id="percentage" style="width:30px"> Upto 
+                <input type="text" name="" id="sem" style="width:40px"> Th Semister
+            </td> 
+            </tr>
+            <tr>
+                <td><label for="">Experience:</label></td>
+                <td><input type="text" name="" id="exp"> Years</td>
+            </tr>
+            <tr>
+                <td><label for="">Languages Know</label></td>
+                <td>
+                    <input type="checkbox" name="language"  value="Telugu">Telugu
+                    <br>
+                    <input type="checkbox" name="language" value="Hindi" >Hindi
+                    <br>
+                    <input type="checkbox" name="language" value="English" >English
+                    <br>
+                    <input type="checkbox" name="language"  value="Tamil">Tamil
+                </td>
+            </tr>
+            <tr>
+                <td><label for="">Your website or Blog:</label></td>
+                <td><input type="text" id="blog"></td>
+            </tr>
+        </table>
+        <button type="button" onclick="getUser()">Get User</button>
+    </fieldset>
+    </form>
+    <script>
+        function getUser(){
+            var person={
+                university:"",
+                institute:"",
+                percentage:"",
+                sem:"",
+                exp:"",
+                blog:"",
+                course:"",
+                branch:"",
+                degree:"",
+                languages:[],
+                }
+            for(a in person){
+                if(a == "course"){
+                    var radioButtons= document.getElementsByName("course")
+                    radioButtons.forEach((ele)=>{
+                        if(ele.checked){
+                            person[a]=ele.value
+                        }
+                    })
+                }
+                else if(a=="languages"){
+                    var lang=document.getElementsByName("language")
+                    lang.forEach((e)=>{
+                        if(e.checked){
+                            person.languages.push(e.value)
+                        }
+                    })
+                }
+                else{
+                    person[a]=document.getElementById(a).value
+                }
+            }
+            console.log(person)
+        }
+    </script>
+</body>
+</html>

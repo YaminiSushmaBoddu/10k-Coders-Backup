@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Mobile Number</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var users = [
+            {
+                "fname": "Marcia",
+                "lname": "Roberts",
+                "tel": "(577)615-6858",
+                "address": "5024 Curabitur Ave",
+                "city": "Rachel",
+                "state": "HI",
+                "zip": 21031
+            },
+            {
+                "fname": "Dewey",
+                "lname": "Alua",
+                "tel": "(616)468-9672",
+                "address": "3059 Facilisis Ct",
+                "city": "Wilder",
+                "state": "WY",
+                "zip": 81089
+            },
+            {
+                "fname": "Takita",
+                "lname": "Ziniel",
+                "tel": "(486)413-0251",
+                "address": "369 Amet Ct",
+                "city": "West Hollywood",
+                "state": "MI",
+                "zip": 45775
+            },
+            {
+                "fname": "Alana",
+                "lname": "Lyons",
+                "tel": "(670)950-9089",
+                "address": "7294 Amet Dr",
+                "city": "Chester",
+                "state": "NH",
+                "zip": 75076
+            },
+            {
+                "fname": "Lauris",
+                "lname": "Kirkley",
+                "tel": "(733)765-6780",
+                "address": "265 At Ct",
+                "city": "Lenoir",
+                "state": "AR",
+                "zip": 70770
+            },
+            {
+                "fname": "Monthro",
+                "lname": "Onatop",
+                "tel": "(771)066-5646",
+                "address": "3963 Amet St",
+                "city": "Oxford",
+                "state": "TN",
+                "zip": 66565
+            },
+            {
+                "fname": "Bridgette",
+                "lname": "Apotheloz",
+                "tel": "(471)741-3431",
+                "address": "1486 Amet St",
+                "city": "Springfield",
+                "state": "MN",
+                "zip": 82081
+            },
+            {
+                "fname": "Latrese",
+                "lname": "Hall",
+                "tel": "(919)987-7997",
+                "address": "4396 Aliquam Ave",
+                "city": "Bloomingdale",
+                "state": "MN",
+                "zip": 22540
+            },
+            {
+                "fname": "Zhanna",
+                "lname": "Oxman",
+                "tel": "(844)874-4963",
+                "address": "7974 Neque Ave",
+                "city": "Elk River",
+                "state": "NH",
+                "zip": 30577
+            },
+            {
+                "fname": "Theresa",
+                "lname": "Proia",
+                "tel": "(639)189-3293",
+                "address": "2862 Et Ln",
+                "city": "Wabash",
+                "state": "IA",
+                "zip": 49715,
+            }
+        ]
+        var filteredUsers = []
+        function displayUsers(users) {
+            document.querySelector("tbody").innerHTML=""
+            users.forEach((user,i) => {
+                var row = document.createElement("tr")
+
+                for (a in user) {
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = user[a];
+                    row.appendChild(myTd)
+
+                }
+
+                var deleteTd = document.createElement("td")
+                var deleteBtn =document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteUser(" +i+ ")")
+                deleteBtn.innerHTML = "DELETE"
+                deleteTd.appendChild(deleteBtn)
+                row.appendChild(deleteTd)
+
+                document.querySelector("tbody").appendChild(row)
+            })
+        }
+
+        function deleteUser(i) {
+            if (filteredUsers.length == 0) {
+                filteredUsers = users.filter((user, index) => {
+                    return user.lname !== users[i].lname
+                })
+            }
+            else {
+                filteredUsers = filteredUsers.filter((user, index) => {
+                    return user.lname !== filteredUsers[i].lname
+                })
+            }
+            displayUsers(filteredUsers)
+        }
+        displayUsers(users)
+    </script>
+</body>
+
+</html>

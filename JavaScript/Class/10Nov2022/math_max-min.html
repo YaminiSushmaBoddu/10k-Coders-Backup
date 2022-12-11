@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var array1=[]
+        while(array1.length<5){
+                var randomarray1=Math.round(Math.random()*10000)
+                if(String(randomarray1).length==4){
+                array1.push(randomarray1)
+            }
+        }
+        console.log(array1)
+        document.write(array1+"<br>")
+        var newnumber =[...array1];
+        var max=Math.max.apply(null,array1)
+        console.log("Maximum Number in an Array:"+max)
+        document.write("Maximum Number in an Array:"+max+"<br>")
+        var min=Math.min.apply(null,array1)
+        console.log("Minimum Number in an Array:"+min)
+        document.write("Minimum Number in an Array:"+min)
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 30px;
+        }
+        input{
+            font-size: 20px;
+            background-color: rgb(194, 193, 193);
+            border-radius: 5px;
+        }
+        td{
+            padding: 10px;
+        }
+        button{
+            font-size: 20px;
+            padding: 10px;
+            background-color: rgb(194, 193, 193);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" >
+        <table>
+            <tr>
+            <td><label for="">First Name:</label></td>
+            <td><input type="text" id="fname"></td>
+            </tr>
+            <tr>
+               <td><label for="">Last Name:</label></td>
+               <td><input type="text" id="lname"></td>
+            </tr>
+            <tr>
+                <td><label for="">Date of Birth:</label></td>
+                <td><input type="datetime" name="" id="dob"></td>
+            </tr>
+            <tr>
+                 <td><label for="">Email:</label></td>
+                 <td><input type="email" name="" id="email"></td>
+            </tr>
+            <tr>
+                <td><label for="">Mobile Number:</label></td>
+                <td><input type="tel" name="" id="number"></td>
+            </tr>
+            <tr>
+                <td> <button type="button" onclick="user()">SUBMIT</button>
+                 <button type="reset">RESET</button></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        function user(){
+            var person={
+                fname:"",
+                lname:"",
+                dob:"",
+                email:"",
+                number:""
+            }
+            for(a in person){
+                person[a]=document.getElementById(a).value
+            }
+            console.log(person)
+        }
+    </script>
+</body>
+</html>

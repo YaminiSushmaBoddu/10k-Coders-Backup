@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="left">
+
+    </div>
+    <div class="right">
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Date of Birth</td>
+                    <td>Email</td>
+                    <td>Password</td>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</body>
+<script>
+       var users=[{
+        fname:"yamini",
+        lname:"Boddu",
+        dob:"28th Dec",
+        email:"Yamini123@gmail.com",
+        password:"yamini"
+       },
+    {
+        fname:"sushma",
+        lname:"b",
+        dob:"25th llc",
+        email:"Yamini123@gmail.com",
+        password:"darling"   
+    }]
+        for (a in users) {
+            users[a] = document.getElementById(a).value
+            console.log(users[a])
+        }
+        return users
+    
+
+    function displayUsers(users) {
+        users.forEach((user, i) => {
+       var myTr=document.createElement("tr")
+        for(b in user){
+        var  myTd=document.createElement("td")
+        myTd.innerHTML=user[b]
+        myTr.appendChild(myTd)
+        }
+        document.querySelector("tbody").appendChild(myTr)
+        })
+      console.log(user)
+    }
+
+</script>
+</html>

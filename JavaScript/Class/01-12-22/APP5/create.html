@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container text-center">
+        <button class="btn btn-primary" onclick="goToMainPage()">Go To Main Page</button>
+        <h2>Welcome To Create Page</h2>
+
+    </div>
+    <div class="container text-center col-6">
+        <form action="" class="form">
+            <label for="" class="form-label">ID</label>
+            <input type="text" class="form-control mb-3" id="id" disabled>
+            <label for="" class="form-label">Title</label>
+            <input type="text" class="form-control mb-3" id="Title">
+            <label for="" class="form-label">Year</label>
+            <input type="text" class="form-control mb-3" id="Year">
+            <label for="" class="form-label">imdb Rating</label>
+            <input type="text" class="form-control mb-3" id="imdbRating">
+            <label for="" class="form-label">Type</label>
+            <input type="text" class="form-control mb-3" id="Type">
+            <label for="" class="form-label">Poster</label>
+            <input type="text" class="form-control mb-3" id="Poster">
+            <button class="btn btn-secondary" onclick="editMovie()">Update User</button>
+        </form>
+    </div>
+    <script>
+        var mainMovie = {}
+        var id
+        var url = window.location.href
+        if (url.lastIndexOf("?") > -1) {
+            id = url.substr(url.lastIndexOf("?") + 1)
+        }
+        else {
+            id = null
+        }
+
+        fetch("http://localhost:3000/Search/" + id)
+            .then((res) => {
+                return res.json()
+            }).then((movie) => {
+                mainMovie = movie
+                for (a in movie) {
+                    document.getElementById(a).value = movie[a]
+                }
+            })
+
+            function goToMainPage() {
+            window.location.href = "index.html"
+        }
+
+        function editMovie() {
+            if (id) {
+                fetch("http://localhost:3000/Search/" + id, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(captureDetails())
+                })
+                .then((res) => {
+                    return res.json()
+                })
+                .then(() => {
+                    window.location.href ="index.html"
+                })
+            } else {
+                fetch("http://localhost:3000/Search", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(captureDetails())
+                })
+                .then((res) => {
+                    return res.json()
+                })
+                .then(() => {
+                    window.location.href ="index.html"
+                })
+            }
+        }
+
+        function captureDetails() {
+            var newMovie = {
+                id: "",
+                Title: "",
+                Year:"",
+                imdbRating: "",
+                Type: "",
+                Poster: ""
+            }
+            for (a in newMovie) {
+                newMovie[a] = document.getElementById(a).value
+            }
+            return newMovie
+        }
+    </script>
+</body>
+
+</html>

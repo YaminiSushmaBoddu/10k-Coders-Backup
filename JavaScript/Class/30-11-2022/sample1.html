@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function stringMethods(){
+            var name="Yamini    Sushma   Sushma"
+           document.write(name.length+"<br>")
+           document.write(name.split(" ").reverse().join()+"<br>")
+           document.write(name.slice(2,16)+"<br>")
+           document.write(name.substring(5,18)+"<br>")
+           document.write(name.substr(7,16)+"<br>")
+           document.write(name.replace("Sushma","Yamini")+"<br>")
+           document.write(name.replace(/sushma/gi,"Yamini")+"<br>")
+           document.write(name.replaceAll("Sushma","Yamini")+"<br>")
+           document.write(name.trim()+"<br><br>")
+        }
+        stringMethods()
+        var fname="Yamini"
+        var lname="Sushma"
+        var string="Hi ALl Welcome to Javascript Training Sessions. And Welcome to ReactJS"
+        var fullName=fname.concat(" "+lname+"......<br>")
+        document.write(fullName)
+        document.write(fullName.charAt(7)+"<br>")
+        document.write(fullName.charCodeAt(2)+"<br>")
+        document.write(string.indexOf(".")+"<br>")
+        document.write(string.lastIndexOf("Welcome")+"<br>")
+    </script>
+</body>
+</html>

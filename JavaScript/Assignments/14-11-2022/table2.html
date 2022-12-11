@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>User Name</th>
+                <th>Password</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var users = [
+            {
+                "id": 1,
+                "email": "BAlpert@non.io",
+                "username": "NTurich",
+                "password": "0eq5u"
+            },
+            {
+                "id": 2,
+                "email": "TStevens@magna.org",
+                "username": "MTurbeville",
+                "password": "ylqSb"
+            },
+            {
+                "id": 3,
+                "email": "RRenner@massa.org",
+                "username": "AReinhard",
+                "password": "HTgzS"
+            },
+            {
+                "id": 4,
+                "email": "CButterfield@vel.com",
+                "username": "DReviews",
+                "password": "Sp0LO"
+            },
+            {
+                "id": 5,
+                "email": "RCurl@nec.io",
+                "username": "JNimon",
+                "password": "CzpdA"
+            },
+            {
+                "id": 6,
+                "email": "WReyes@nunc.com",
+                "username": "MTurich",
+                "password": "wCb7q"
+            },
+            {
+                "id": 7,
+                "email": "AKreigler@neque.ly",
+                "username": "ALyden",
+                "password": "f0g2V"
+            },
+            {
+                "id": 8,
+                "email": "AFlint@vestibulum.ly",
+                "username": "QStephens",
+                "password": "whgS0"
+            },
+            {
+                "id": 9,
+                "email": "SGirdner@ac.com",
+                "username": "LJohnston",
+                "password": "ytdhe"
+            },
+            {
+                "id": 10,
+                "email": "AMorris@vitae.gov",
+                "username": "AKarma",
+                "password": "lUgn2"
+            }
+        ]
+        var filteredUsers=[]
+      function displayUsers(users){
+        document.querySelector("tbody").innerHTML=""
+        users.forEach((user,i) => {
+            var myTr = document.createElement("tr")
+
+            /* Object.values(user).forEach((val)=>{
+                 var myTd=document.createElement("td")
+                 myTd.innerHTML=val;
+                 myTr.appendChild(myTd)
+             })*/
+
+            for (a in user) {
+                var myTd = document.createElement("td")
+                myTd.innerHTML = user[a];
+                myTr.appendChild(myTd)
+            }
+
+            /*var td1=document.createElement("td")
+            td1.innerHTML=user.id;
+            myTr.appendChild(td1)
+       
+            var td2=document.createElement("td")
+            td2.innerHTML=user.email;
+            myTr.appendChild(td2)
+       
+            var td3=document.createElement("td")
+            td3.innerHTML=user.username;
+            myTr.appendChild(td3)
+       
+            var td4=document.createElement("td")
+            td4.innerHTML=user.password;
+            myTr.appendChild(td4)*/
+
+            var deleteTd = document.createElement("td")
+            var deleteBtn = document.createElement("button")
+            deleteBtn.setAttribute("onclick", "deleteUser("+i+")")
+            deleteBtn.innerHTML = "DELETE"
+            deleteTd.appendChild(deleteBtn)
+            myTr.appendChild(deleteTd)
+
+            document.querySelector("tbody").appendChild(myTr)
+        })
+      }
+
+        function deleteUser(i) {
+          if(filteredUsers.length==0){
+            filteredUsers=users.filter((user,index)=>{
+                return user.id !== users[i].id
+            })
+          }
+          else{
+            filteredUsers=filteredUsers.filter((user,index)=>{
+                return user.id !== filteredUsers[i].id
+            })
+          }
+          displayUsers(filteredUsers)
+        }
+        displayUsers(users)
+    </script>
+</body>
+
+</html>

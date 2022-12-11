@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" onclick="getDataFromServer()">Get Data</button>
+    <script>
+        var data = []
+        function getDataFromServer() {
+            var getData = new XMLHttpRequest()
+            getData.onreadystatechange = function () {
+                if (getData.readyState == 4 && getData.status == 200) {
+                    data = JSON.parse(getData.response)
+                    console.log(data)
+                    displayData()
+                }
+            }
+            getData.open("GET", "http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&pretty=true")
+            getData.send()
+        }
+        function displayData() {
+            data.forEach((ele)=>{
+                document.write(ele.fname+ele.lname+ " , "+ele.tel+","+ele.city+'<br>')
+            })
+        }
+
+        /* function getDataFromServer(){
+             return new Promise((resolve, reject) => {
+                 var getData=new XMLHttpRequest()
+               getData.onreadystatechange=function(){
+                 if(getData.readyState==4 && getData.status==200){
+                     data=JSON.parse(getData.response)
+                    resolve(data)
+                    //reject()
+                 }
+               }
+               getData.open("GET","http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&pretty=true")
+               getData.send()
+         
+             })
+         }
+         getDataFromServer().then((data)=>{
+             data.forEach((ele)=>{
+               document.write(ele.fname+ele.lname+ " , "+ele.tel+","+ele.city+'<br>')
+             })
+         }).catch(()=>{
+             document.write("Server Error")
+         })*/
+
+        /*  function getDataFromServer() {
+              return new Promise((resolve, reject) => {
+                  var getData = new XMLHttpRequest()
+                  getData.onreadystatechange = function () {
+                      if (getData.readyState == 4 && getData.status == 200) {
+                          data = JSON.parse(getData.response)
+                          resolve(data)
+                      }
+                  }
+                  getData.open("GET", "http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&pretty=true")
+                  getData.send()
+              })
+          }
+          async function handledAsynchronousData() {
+              try {
+                  var data = await getDataFromServer()
+                  data.forEach((ele) => {
+                     document.write(ele.fname+ele.lname+ " , "+ele.tel+","+ele.city+'<br>')
+                  })
+              } catch (error) {
+                  document.write("Server Error")
+              }
+          }
+          handledAsynchronousData()*/
+    </script>
+</body>
+
+</html>

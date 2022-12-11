@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form action="">
+            <input type="text"  id="taskName" placeholder="Task Name">&nbsp;&nbsp;&nbsp;&nbsp;
+       
+            <select name="select" id="category">
+                <option>Select Category</option>
+                <option>NAP Bug Task</option>
+                <option>NAP Dev</option>
+                <option>New Project</option>  
+                <option>HP Update</option>                                   
+            </select>&nbsp;&nbsp;&nbsp;
+
+            <input type="text"  id="jiraID" placeholder="Jira ID"><br><br>
+
+            <select  id="assignee">
+                <option>Select Assigne</option>
+                <option>Bibhu</option>
+                <option>Tanzil</option>                                    
+            </select>&nbsp;&nbsp;&nbsp;
+
+            <select  id="status">
+                <option>Select Status</option>
+                <option>Not-Completed</option>
+                <option>On Hold</option>   
+                <option>Completed</option>                                  
+            </select>&nbsp;&nbsp;&nbsp;
+
+            <input type="date"  id="created">&nbsp;&nbsp;&nbsp;
+
+            <input type="Date"  id="due"><br><br>
+
+            <input type="text"  id="mockUp" placeholder="Mock UP"><br><br>
+
+            <textarea  id="notes" cols="118" rows="5" placeholder="Other Comments"></textarea><br><br>
+
+            <button type="button" class="button" onclick="getDeatails()">SUBMIT</button>
+ 
+        </form>
+    </div>
+      <br>
+    <div>
+        <table  border="1">
+            <thead>
+                <tr>
+                    <th>TASK NAME</th>
+                    <th >CREATED</th>
+                    <th>DUE</th>
+                    <th >ASSIGNEE</th>
+                    <th >CATEGORY</th>
+                    <th >STATUS</th>
+                    <th>JIRA ID</th>
+                    <th >MOCK-UP</th>
+                    <th >NOTES</th>
+                    <th >ACTIONS</th>
+                </tr>
+                
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script>
+          var userInfo = {
+            taskName: "",
+            created: "",
+            due: "",
+            assignee: "",
+            category: "",
+            status: "",
+            jiraID: "",
+            mockUp: "",
+            notes: "",
+
+        }
+        var data=[]
+        function getDeatails(){
+            var users = {...userInfo}
+             for(a in users){
+                users[a] = document.getElementById(a).value
+             }
+             data.push(users)
+             console.log(users)
+             displayUsers(data)
+             clearForm()
+        }
+
+        function displayUsers(data){
+            document.querySelector("tbody").innerHTML=""
+           data.forEach((element) => {
+            var myTr=document.createElement("tr")
+            for(a in element){
+              var  myTd =document.createElement("td")
+              myTd.innerHTML=element[a]
+              myTr.appendChild(myTd) 
+                
+            }
+            var editTd=document.createElement("td")
+            var editBtn=document.createElement("button")
+            editBtn.innerHTML="EDIT"
+            editTd.appendChild(editBtn)
+            myTr.appendChild(editBtn)
+
+            document.querySelector("tbody").appendChild(myTr)
+           });
+        }
+
+        function clearForm(){
+            for(a in userInfo){
+                document.getElementById(a).value = ""
+            }
+        }
+    </script>
+</body>
+</html>

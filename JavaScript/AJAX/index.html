@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .left {
+            float: left;
+            width: 40%;
+        }
+
+        .right {
+            float: left;
+            width: 60%;
+        }
+
+        #updateUserBtn {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button type="button" onclick="getDataFromServer()">GetData</button><br><br><br><br>
+    <div class="left">
+        <form action="">
+            <label for="">ID:
+                <input type="text" id="id" disabled>
+            </label><br><br>
+            <label for="">First Name
+                <input type="text" id="fname">
+            </label><br><br>
+            <label for="">Last Name:
+                <input type="text" id="lname">
+            </label><br><br>
+            <label for="">Address:
+                <input type="text" id="address">
+            </label><br><br>
+            <label for="">City:
+                <input type="text" id="city">
+            </label><br><br>
+            <label for="">State:
+                <input type="text" id="state">
+            </label><br><br>
+            <button type="button" id="createUserBtn" onclick="createUser()" >Create User</button>
+            <button type="button" id="updateUserBtn" onclick="updateUser()">Update User</button>
+        </form>
+    </div>
+    <div class="right">
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>FirstName</td>
+                    <td>LastName</td>
+                    <td>Address</td>
+                    <td>City</td>
+                    <td>State</td>
+                    <td>Edit</td>
+                    <td>Delet</td>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script>
+        var users = []
+        var api_url = " http://localhost:3000/users/"
+        function getDataFromServer() {
+            var getData = new XMLHttpRequest()
+            getData.onreadystatechange = function () {
+                if (getData.readyState == 4 && getData.status == 200) {
+                    users = JSON.parse(getData.response)
+                    displayUsers(users)
+                    console.log(users)
+                }
+            }
+
+            //var api_url = "http://filltext.com/?rows=5&fname={firstName}&lname={lastName}&address={streetAddress}&city={city}&state={usState|abbr}&pretty=true"
+            getData.open("GET", api_url)
+            getData.send()
+        }
+        getDataFromServer()
+
+        function displayUsers(users) {
+         //   document.querySelector("tbody").innerHTML = ""
+            users.forEach((user, i) => {
+                var myTr = document.createElement("tr")
+                for (a in user) {
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                }
+                editTd = document.createElement("td")
+                editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "editUser(" + i + ")");
+                editBtn.innerHTML = "EDIT"
+                editTd.appendChild(editBtn)
+                myTr.appendChild(editTd)
+
+                deleteTd = document.createElement("td")
+                deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteUser(" + i + ")");
+                deleteBtn.innerHTML = "DELETE"
+                deleteTd.appendChild(deleteBtn)
+                myTr.appendChild(deleteTd)
+
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+
+        function editUser(i) {
+            var userEdit = users[i]
+            for (a in userEdit) {
+                document.getElementById(a).value = userEdit[a]
+            }
+            swapBtns(true)
+        }
+
+        function updateUser() {
+            var newuser = readValuesFromForm()
+            console.log(newuser)
+            var create = new XMLHttpRequest()
+            create.onreadystatechange = function () {
+                if (create.readyState == 4 && create.status == 200) {
+                    getDataFromServer()
+                }
+            }
+            console.log(newuser.id)
+            create.open("PUT", api_url + newuser.id)
+            console.log(api_url + newuser.id)
+            create.setRequestHeader("Content-Type", "application/json")
+            create.send(JSON.stringify(newuser))
+        }
+
+        function createUser() {
+            var newUser = readValuesFromForm()
+            console.log(newUser)
+            var createUser = new XMLHttpRequest()
+            createUser.onreadystatechange = function () {
+                if (createUser.readyState == 4 && createUser.status == 201) {
+                    getDataFromServer()
+                }
+            }
+            createUser.open("POST", api_url)
+            createUser.setRequestHeader("Content-Type", "application/json")
+            createUser.send(JSON.stringify(newUser))
+        }
+
+
+
+        function updateUser() {
+
+        }
+
+
+        function deleteUser(i) {
+            var delUser = new XMLHttpRequest()
+            delUser.onreadystatechange = function () {
+                if (delUser.readyState == 4 && delUser.status == 200) {
+                    getDataFromServer()
+                }
+            }
+            delUser.open("DELETE", api_url + users[i].id)
+            delUser.send()
+        }
+
+        function readValuesFromForm() {
+            var user = {
+                id: "",
+                fname: "",
+                lname: "",
+                address: "",
+                city: "",
+                state: "",
+            }
+            for (a in user) {
+                user[a] = document.getElementById(a).value
+            }
+            return user
+        }
+
+        function swapBtns(val) {
+            if (val) {
+                document.getElementById("createUserBtn").style.display = "none"
+                document.getElementById("updateUserBtn").style.display = "block"
+            }
+            else {
+                document.getElementById("createUserBtn").style.display = "block"
+                document.getElementById("updateUserBtn").style.display = "none"
+            }
+        }  
+    </script>
+</body>
+
+</html>

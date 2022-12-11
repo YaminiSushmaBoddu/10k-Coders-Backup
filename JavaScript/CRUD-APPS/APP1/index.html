@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APP1</title>
+    <style>
+        .form {
+            float: left;
+            width: 30%;
+
+        }
+
+        .tableContent {
+            float: left;
+            margin-left: 50px;
+           width: 60%;
+        }
+        #updateUserBtn{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form">
+        <form>
+            <fieldset>
+                <legend>Registration Details</legend>
+                <label>University:</label>
+                <input type="text" name="" id="university"><br><br>
+
+                <label>Institute:</label>
+                <input type="text" name="" id="institute"><br><br>
+
+                <label>Branch:</label>
+                <select name="" id="branch">
+                    <option value="--select--">--select--</option>
+                    <option value="ECE">ECE</option>
+                    <option value="EEE">EEE</option>
+                    <option value="MECH">MECH</option>
+                    <option value="CSE">CSE</option>
+                </select>
+                <br><br>
+
+
+                <label for="">Degree:</label>
+                <select name="" id="degree">
+                    <option value="B.Tech">B.Tech</option>
+                    <option value="BA">BA</option>
+                </select><br><br>
+
+                <input type="radio" name="course" value="Pursuing">Pursuing
+                <input type="radio" name="course" value="Completed">Completed
+                <br><br>
+
+                <label for="">Average CPI:</label>
+                <input type="text" name="" id="percentage" style="width:30px"> Upto
+                <input type="text" name="" id="sem" style="width:40px"> Th Semister
+                <br><br>
+
+                <label for="">Experience:</label>
+                <input type="text" name="" id="exp"> Years
+                <br><br>
+                <label for="">Languages Know:</label>
+                <br>
+
+                <input type="checkbox" name="language" value="Telugu">Telugu
+                <br>
+                <input type="checkbox" name="language" value="Hindi">Hindi
+                <br>
+                <input type="checkbox" name="language" value="English">English
+                <br>
+                <input type="checkbox" name="language" value="Tamil">Tamil
+                <br><br>
+                <label for="">Your website or Blog:</label>
+                <input type="text" id="blog"><br><br>
+
+                <button type="button" onclick="getUser()" id="getUserBtn">Get User</button>
+                <button type="button" onclick="updateUser()" id="updateUserBtn">Update User</button>
+        </form>
+    </div>
+    <div class="tableContent">
+        <table border="1px">
+            <thead>
+                <tr>
+                    <td>University</td>
+                    <td>Institute</td>
+                    <td>Branch</td>
+                    <td>Degree</td>
+                    <td>Course</td>
+                    <td>Average CGP</td>
+                    <td>Semister</td>
+                    <td>Experience</td>
+                    <td>Languages</td>
+                    <td>Website</td>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script src="./create.js"></script>
+    <script src="./read.js"></script>
+    <script src="./delete.js"></script>
+    <script src="./edit.js"></script>
+
+</body>
+
+</html>

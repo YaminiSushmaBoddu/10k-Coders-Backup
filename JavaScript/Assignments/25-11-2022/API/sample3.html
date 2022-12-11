@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document3</title>
+</head>
+
+<body>
+    <button type="button" onclick="getData()">Get Data </button>
+    <ul></ul>
+    <script>
+        var data = []
+        /*  function getData(){
+             var getInfo=new XMLHttpRequest()
+             getInfo.onreadystatechange=function(){
+              if(getInfo.readyState==4 && getInfo.status==200){
+                data=JSON.parse(getInfo.response)
+                console.log(data)
+                displayData()
+              }
+             }
+            getInfo.open("GET","https://cities-cost-of-living1.p.rapidapi.com/get_cities_list")
+             getInfo.setRequestHeader("X-RapidAPI-Key", "48e058f4fbmshc917db2ba62aa60p10e353jsnc3dc90dda8dd")
+             getInfo.setRequestHeader("X-RapidAPI-Host", "cities-cost-of-living1.p.rapidapi.com")
+             getInfo.send()
+          }
+        function displayData(){
+          data.forEach((ele)=>{
+              var myLi=document.createElement("li")
+              myLi.innerHTML=ele.name
+              document.querySelector("ol").appendChild(myLi)
+          })
+        }*/
+
+        /*   function getData(){
+             return new Promise((resolve, reject) => {
+                 var getInfo=new XMLHttpRequest()
+                 getInfo.onreadystatechange=function(){
+                     if(getInfo.readyState==4 && getInfo.status==200){
+                         data=JSON.parse(getInfo.response)
+                     }
+                 }
+                getInfo.open("GET","https://cities-cost-of-living1.p.rapidapi.com/get_cities_list")
+                getInfo.setRequestHeader("X-RapidAPI-Key", "48e058f4fbmshc917db2ba62aa60p10e353jsnc3dc90dda8dd")
+                getInfo.setRequestHeader("X-RapidAPI-Host", "cities-cost-of-living1.p.rapidapi.com")
+                getInfo.send()
+               //resolve(data)
+               reject()
+             })
+           }
+           getData().then((data)=>{
+             data.forEach((ele)=>{
+                 var myLi=document.createElement("li")
+                 myLi.innerHTML=ele.name
+                 document.querySelector("ol").appendChild(myLi)
+             })
+           }).catch(()=>{
+             document.write("Error")
+           })*/
+
+        function getData() {
+            return new Promise((resolve, reject) => {
+                var getInfo = new XMLHttpRequest()
+                getInfo.onreadystatechange = function () {
+                    if (getInfo.readyState == 4 && getInfo.status == 200) {
+                        data = JSON.parse(getInfo.response)
+                    }
+                }
+                getInfo.open("GET", "https://cities-cost-of-living1.p.rapidapi.com/get_cities_list")
+                getInfo.setRequestHeader("X-RapidAPI-Key", "48e058f4fbmshc917db2ba62aa60p10e353jsnc3dc90dda8dd")
+                getInfo.setRequestHeader("X-RapidAPI-Host", "cities-cost-of-living1.p.rapidapi.com")
+                getInfo.send()
+                console.log(data)
+                resolve(data)
+               // reject()
+            })
+        }
+        async function handledAsynchronousData() {
+            try {
+                var data = await getData()
+                data.forEach((ele) => {
+                    var myLi = document.createElement("li")
+                    myLi.innerHTML = ele.name
+                    document.querySelector("ol").appendChild(myLi)
+                })
+            } catch (error) {
+                document.write("Error")
+            }
+        }
+
+    </script>
+</body>
+
+</html>

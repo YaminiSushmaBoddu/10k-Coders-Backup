@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 300px;
+            height: 300px;
+            cursor: pointer;
+        }
+
+        div {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="" alt="Error">
+        <p style="color:red; display: none" > Image Paused</p>
+    </div>
+    <script>
+        document.querySelector("img").setAttribute("src", "1.jpg")
+        function slider() {
+            var imageurl = document.querySelector("img").src
+            var imageNo = imageurl.substr(imageurl.lastIndexOf("/") + 1, 1)
+            imageNo++
+            if (imageNo == 5) {
+                imageNo = 1
+            }
+            document.querySelector("img").setAttribute("src", imageNo + ".jpg")
+        }
+
+        var sliding
+        function startSliding() {
+            sliding = setInterval(() => {
+                slider()
+            }, 1000)
+            document.querySelector("p").style.display="none"
+        }
+        function stopSliding() {
+            clearInterval(sliding)
+            document.querySelector("p").style.display="block"
+        }
+
+        document.querySelector("img").onmouseover = function () {
+            stopSliding()
+        }
+        document.querySelector("img").onmouseleave = function () {
+            startSliding()
+        }
+        startSliding()
+    </script>
+</body>
+
+</html>

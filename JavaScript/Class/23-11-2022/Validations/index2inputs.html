@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            display: none;
+            color: brown;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <p>Enter minimum 5 charaters for both FirstName and LastName</p>
+    <form action="">
+        <label for="">First Name:
+            <input type="text" id="fname" onkeyup="checkUser()">
+        </label>
+        <label for="">Last Name:
+            <input type="text" id="lname" onkeyup="checkUser()">
+        </label>
+        <br><br>
+        <button type="button"  disabled>Add User</button>
+    </form>
+</body>
+<script>
+    function checkUser(){
+        var user={
+            fname:"",
+            lname:"",
+        }
+        for(a in user){
+          user[a]=  document.getElementById(a).value
+          console.log(user)
+        }
+
+        var check=true
+
+        if(user.fname.length<5 || user.lname.length<6)
+        {
+            check=false;
+        }
+        if(check){
+           document.querySelector("button").removeAttribute("disabled") 
+           document.querySelector("p").style.display="none"
+        }
+        else{
+            document.querySelector("button").setAttribute("disabled",true) 
+            document.querySelector("p").style.display="block" 
+        }
+    }
+</script>
+</html>
