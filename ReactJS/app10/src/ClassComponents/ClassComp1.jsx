@@ -12,11 +12,6 @@ export default class ClassComp1 extends Component{
         return(
             <div>
                 <h2>Types of Flowers</h2>
-                <ul>
-                    {this.state.flowers.map((val)=>{
-                        return <li>{val}</li>
-                    })}
-                </ul>
             </div>
         )
     }

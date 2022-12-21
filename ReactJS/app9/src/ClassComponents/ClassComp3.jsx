@@ -11,18 +11,26 @@ export default class ClassComp3 extends Component{
                 district3:"Medak",
                 district4:"Nizamabad",
                 district5:"Warangal"
-            }
-        }
+            },
+            show:false
+        };
+       this.showDistricts =this.showDistricts.bind(this)
+    }
+    showDistricts(){
+        console.log("Called")
+              this.setState({show:true})
     }
     render(){
         return(
-            <div>
+            <div >
                 <h2>Districts in Telengana</h2>
-                <ul>
-                    {Object.values(this.state.districts).map((val)=>{
-                        return <li>{val}</li>
+                <button onClick={this.showDistricts}>Show Districts</button>
+                {this.state.show &&
+                  <ul>
+                    {Object.values(this.state.districts).map((val,i)=>{
+                        return <li key={i}>{val}</li>
                     })}
-                </ul>
+                  </ul> }
             </div>
         )
     }

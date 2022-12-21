@@ -6,17 +6,23 @@ export default class ClassComp4 extends Component{
     constructor () {
         super()
         this.state = {
-            districts: ["Bidar", "udupi", "Dharwad", "Uttara Kannada", "Yadgir", "Kolar"]
+            districts: ["Bidar", "udupi", "Dharwad", "Uttara Kannada", "Yadgir", "Kolar"],
+            show:false
         }
-    } render() {
+    }
+    showDistricts=()=>{
+        this.setState({show:true})
+    }
+    render() {
         return (
             <div>
             <h2>Districts in Karnataka</h2>
-                <ul>
-                  {this.state.districts.map((val)=>{
-                      return <li>{val}</li>
+            <button onClick={this.showDistricts}>Show Districts</button>
+               {this.state.show &&  <ul>
+                  {this.state.districts.map((val,i)=>{
+                      return <li key={i}>{val}</li>
                   })}
-                </ul>
+                </ul>}
             </div>
         )
     }
