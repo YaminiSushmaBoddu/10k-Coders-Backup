@@ -3,6 +3,9 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Layout from './Components/Layout';
 import Users from './Components/Users';
 import Delete from './Components/Delete';
+import Create from './Components/Create';
+import Navbar from './Components/Navbar';
+import Edit from './Components/Edit';
 function App() {
   return (
     <div className="App">
@@ -11,9 +14,13 @@ function App() {
 
       
            <BrowserRouter>
+           <Navbar/>
               <Routes>
-                  <Route path='/' element={<Layout/>}>
-                      <Route path='/Delete' element={<Delete/>}/>
+                  <Route path="/" element={<Layout/>}>
+                      <Route index element={<Users/>}/>
+                      <Route path='/Delete/:id' element={<Delete/>}/>
+                      <Route path='/Edit/:id' element={<Edit/>}/>
+                      <Route path='/create' element={<Create/>}/>
                  </Route>
                </Routes>
            </BrowserRouter>
